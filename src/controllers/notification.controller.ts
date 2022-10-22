@@ -30,4 +30,17 @@ router.post('/',
     }
   })
 
+router.get('/',
+  async (request: Request, response: Response): Promise<Response> => {
+    try {
+      const foundNotifications = await NotificationService.getAll()
+
+      return response.status(httpStatus.OK).json(foundNotifications)
+    } catch (error) {
+      const e = error as ErrorTypes
+      return await errorHandler(e, request, response)
+    }
+  }
+)
+
 export { router }

@@ -40,9 +40,10 @@ app.set('socket', socket)
 
 // socket connection
 socket.on('connection', (s) => {
+  console.log(`SOCKET connection ${s.id}`)
   s.send('you are connected')
   s.on('disconnect', () => {
-    console.log('you are disconnected')
+    console.log(`SOCKET disconnect ${s.id}`)
   })
 })
 

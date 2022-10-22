@@ -1,0 +1,14 @@
+version: '3'
+
+services: 
+  hey-db:
+    image: postgres:13.1
+    container_name: hey-db
+    environment:
+      - POSTGRES_USER=root 
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=hey-db
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/
+    ports:
+      - '5432:5432'
