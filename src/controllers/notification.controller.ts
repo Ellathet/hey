@@ -3,6 +3,7 @@ import httpStatus from 'http-status'
 import { ErrorTypes } from '../@types/error.types'
 import { ISendNotificationDTO } from '../@types/notification.types'
 import { NOTIFICATION_ACTIONS } from '../constants/actions.constants'
+import { AuthenticateMiddleware } from '../middlewares/authenticate.middleware'
 import { errorHandler } from '../middlewares/error_handler.middleware'
 import { validator } from '../middlewares/validatior_handler.middleware'
 import { NotificationSendSchema } from '../schemas/notification.schema'
@@ -11,6 +12,7 @@ import { NotificationService } from '../services/notification.service'
 const router = express.Router()
 
 router.post('/',
+  AuthenticateMiddleware.authenticateHttp,
   validator(NotificationSendSchema, NOTIFICATION_ACTIONS.send_notification),
   async (request: Request, response: Response): Promise<Response> => {
     try {
@@ -31,6 +33,7 @@ router.post('/',
   })
 
 router.get('/',
+  AuthenticateMiddleware.authenticateHttp,
   async (request: Request, response: Response): Promise<Response> => {
     try {
       const foundNotifications = await NotificationService.getAll()
