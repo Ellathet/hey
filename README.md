@@ -18,7 +18,7 @@ To start in dev environment, you need use: node >= 16, yarn >= 1.22, this app us
   - Configure your .env file:
   `APP_TOKEN` is your password, it is necessary to authenticate the application when you send the notification, or recive. And `DATABASE_URL`, for default is it is consistent with docker-compose
 
-After config just run: `yarn start:dev` and be happy codding 🤯.
+After config you need run migrations from prisma, run: `yarn db:update`, after run `yarn start:dev` and be happy codding 🤯.
 
 ## Socket
   To test socket I'm use [firecamp](https://firecamp.io/), connected to port 3025, and listen `notification`:
