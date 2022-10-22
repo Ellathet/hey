@@ -1,7 +1,7 @@
 {
   "name": "hey",
   "version": "1.0.0",
-  "description": "A simple aplication to send notifications",
+  "description": "A simple application to send notifications",
   "main": "index.js",
   "license": "MIT",
   "scripts": {

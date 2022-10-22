@@ -23,7 +23,7 @@ services:
       dockerfile: Dockerfile
     ports: 
       - "3025:3025"
-    command: pm2-runtime app.js
+    command: pm2-runtime server.js
     external_links:
       - hey-db
     depends_on:
