@@ -2,7 +2,7 @@ import io from 'socket.io'
 import { getEnv } from '../utils/env'
 import httpStatus from 'http-status'
 
-export const authenticateSocket = (
+const authenticateSocket = (
   s: io.Socket,
   next: (err?: Error | undefined) => void): void => {
   const token = s.handshake.auth.token

@@ -7,6 +7,7 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import io from 'socket.io'
 import { AuthenticateMiddleware } from './middlewares/authenticate.middleware'
+import { Router } from './routes'
 
 // start dot env
 dotenv.config()
@@ -34,11 +35,17 @@ app.use(cors())
 // authenticate socket middleware
 socket.use(AuthenticateMiddleware.authenticateSocket)
 
+// put socket in express app
+app.set('socket', socket)
+
+// socket connection
 socket.on('connection', (s) => {
-  console.log('a user connected')
+  s.send('you are connected')
   s.on('disconnect', () => {
-    console.log('user disconnected')
+    console.log('you are disconnected')
   })
 })
+
+app.use('/api', Router)
 
 server.listen(3025, () => console.log('Running in 3025'))
