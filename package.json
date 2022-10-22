@@ -6,6 +6,9 @@
   "license": "MIT",
   "scripts": {
     "start:dev": "nodemon",
+    "start": "cd ./dist && npm run start",
+    "lint": "eslint --fix \"**/*.ts\"",
+    "build": "rimraf ./dist && npm run lint && tsc",
     "db:generate": "npx prisma generate",
     "db:migration-generate": "npx prisma migrate dev --name",
     "db:migration": "npx prisma migrate dev",
@@ -36,6 +39,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "nodemon": "^2.0.20",
     "prisma": "^4.5.0",
+    "rimraf": "^3.0.2",
     "ts-node": "^10.9.1",
     "typescript": "*"
   },

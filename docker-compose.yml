@@ -12,3 +12,25 @@ services:
       - ./db:/docker-entrypoint-initdb.d/
     ports:
       - '5432:5432'
+    networks:
+      - default
+      
+  hey-app:
+    container_name: hey
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - "3025:3025"
+    command: pm2-runtime app.js
+    external_links:
+      - hey-db
+    depends_on:
+      - hey-db
+    networks:
+      - default
+
+networks:
+  default:
+    name: hey
