@@ -29,3 +29,6 @@ To auth, in Connections tab, send your token set in .env:
 ![image](https://user-images.githubusercontent.com/76699403/197348484-101ded28-6f2a-42ab-b129-2e27013d6b0a.png)
 
 When you send post in path `api/notification`, the app emit the notification to all socket connections avaible.
+
+## Dashboard
+  - To see in a more friendly version use the dashboard, in this [repository](https://github.com/Ellathet/hey-dashboard)
